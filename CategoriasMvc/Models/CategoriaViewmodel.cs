@@ -2,7 +2,7 @@
 
 namespace CategoriasMvc.Models;
 
-public class CategoriaViewmodel
+public class CategoriaViewModel
 {
     public int CategoriaIa { get; set; }
 
