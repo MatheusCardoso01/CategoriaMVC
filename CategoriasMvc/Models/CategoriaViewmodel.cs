@@ -4,7 +4,7 @@ namespace CategoriasMvc.Models;
 
 public class CategoriaViewModel
 {
-    public int CategoriaIa { get; set; }
+    public int CategoriaId { get; set; }
 
     [Required(ErrorMessage = "O nome da categoria é obrigatório")]
     public string? Nome { get; set; }

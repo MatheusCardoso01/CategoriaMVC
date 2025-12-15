@@ -1,4 +1,5 @@
 ﻿using CategoriasMvc.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
@@ -124,7 +125,5 @@ public class CategoriaService : ICategoriaService
             }
         }
     }
-
-
 
 }
