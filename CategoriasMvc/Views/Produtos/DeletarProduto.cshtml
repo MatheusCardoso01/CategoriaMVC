@@ -1,8 +1,8 @@
-﻿@model CategoriasMvc.Models.CategoriaViewModel
+﻿@model CategoriasMvc.Models.ProdutoViewModel
 
-<h3>Deletar Categoria</h3>
+<h3>Deletar Produto</h3>
 
-<h4>Confirma a exclusão desta Categoria ?</h4>
+<h4>Confirma a exclusão deste Produto ?</h4>
 
 <div>
     <hr />
@@ -13,6 +13,24 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(Model => Model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Preco)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Preco)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.CategoriaId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.CategoriaId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(Model => Model.ImagemUrl)
@@ -26,17 +44,17 @@
         <div class="form-group col-md-6" style="padding: 10px">
             @if (string.IsNullOrEmpty(Model.ImagemUrl))
             {
-                <img src="~/imagens/noimage1.png"/>
+                <img src="~/imagens/noimage1.png" />
             }
             else
             {
-                <img src="@Model.ImagemUrl"/>    
+                <img src="@Model.ImagemUrl" />
             }
         </div>
     </div>
 
-    <form asp-action="DeletarCategoria" >
-        <input type="hidden" asp-for="CategoriaId" />
+    <form asp-action="DeletarProduto">
+        <input type="hidden" asp-for="ProdutoId" />
         <div class="form-group" style="padding-top: 10px">
             <input type="submit" value="Deletar" class="btn btn-danger" />
             <a asp-action="Index" class="btn btn-info">Retornar</a>

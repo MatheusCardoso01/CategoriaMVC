@@ -95,6 +95,28 @@ public class ProdutosController : Controller
     }
 
     [HttpGet]
+    public async Task<ActionResult<ProdutoViewModel>> DeletarProduto(int id)
+    {
+        var produto = await _produtoService.GetProdutosPorId(id, ObterTokenJwt());
+
+        if (produto is null)
+            return RedirectToAction(nameof(Index));
+
+        return View(produto);
+    }
+
+    [HttpPost(), ActionName("DeletarProduto")]
+    public async Task<ActionResult<ProdutoViewModel>> DeletaConfirmado(int id)
+    {
+        var result = await _produtoService.DeletaProduto(id, ObterTokenJwt());
+
+        if (result)
+            return RedirectToAction(nameof(Index));
+
+        return View("Error");
+    }
+
+    [HttpGet]
     public async Task<ActionResult<ProdutoViewModel>> VerDetalhesProduto(int id)
     {
         var produto = await _produtoService.GetProdutosPorId(id, ObterTokenJwt());
