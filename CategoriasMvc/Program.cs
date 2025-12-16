@@ -10,7 +10,20 @@ builder.Services.AddHttpClient("CategoriasApi", c =>
     c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CategoriasApi"]);
 });
 
+builder.Services.AddHttpClient("ProdutosApi", c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProdutosApi"]);
+});
+
+builder.Services.AddHttpClient("AutenticaApi", c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration["ServiceUri:AutenticaApi"]);
+    c.DefaultRequestHeaders.Accept.Clear();
+    c.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+});
+
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IAutenticacao, Autenticacao>();
 
 var app = builder.Build();
 
