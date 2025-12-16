@@ -1,0 +1,64 @@
+﻿@model CategoriasMvc.Models.ProdutoViewModel
+
+<h3>Detalhes do Produto</h3>
+<hr />
+
+<div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="ProdutoId" />
+
+    <div class="form-group">
+        <label asp-for="Nome" class="control-label"></label>
+        <input asp-for="Nome" class="form-control" readonly />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descricao" class="control-label"></label>
+        <input asp-for="Descricao" class="form-control" readonly />
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Preco" class="control-label"></label>
+        <input asp-for="Preco" class="form-control" type="number" step="0.01" min="0" readonly />
+        <span asp-validation-for="Preco" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Categoria</label>
+        <input class="form-control" value="@ViewBag.CategoriaNome" readonly />
+    </div>
+
+    <div class="row">
+        <div>
+            <label asp-for="ImagemUrl" class="control-label"></label>
+            <input asp-for="ImagemUrl" class="form-control" readonly />
+            <span asp-validation-for="ImagemUrl" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6" style="padding-top: 10px">
+            @if (string.IsNullOrEmpty(Model.ImagemUrl))
+            {
+                <img src="~/imagens/noimagem1.png" alt="Sem imagem" />
+            }
+            else
+            {
+                <img src="@Model.ImagemUrl" alt="@Model.Nome" />
+            }
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px">
+        <a asp-action="Index" class="btn btn-info">Retornar</a>
+    </div>
+
+    @if (ViewBag.Erro != null)
+    {
+        <div style="color:red">
+            <h4>@ViewBag.Erro</h4>
+        </div>
+    }
+</div>
+
